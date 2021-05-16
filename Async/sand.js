@@ -21,3 +21,9 @@ request.addEventListener('readystatechange', () => {
 
 request.open('GET', 'https://jsonplaceholder.typicode.com/todos/');
 request.send();
+
+// Status Codes 
+// 404  -  Wrong endpoint / not connected / cannot find 
+// 200  - everthing is correct
+
+// https://developer.mozilla.org/en-US/docs/Web/HTTP/Status
