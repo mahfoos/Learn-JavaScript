@@ -7,3 +7,7 @@ Async JavaScript
 
 Synchronous JavaScript
 - javaScript can run ONE statement at a time
+
+HTTP Requests 
+- Make a HTTP requests to get data from another server
+- We make these request to API endpoints
