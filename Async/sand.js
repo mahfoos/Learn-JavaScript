@@ -244,11 +244,15 @@
 
 
   // Vedio 9 
-  // fetch api
+  // fetch api ... much less code and much easy
 
-  fetch('luigis.json').then((response) => {
-    console.log('Resolved', response);
+  fetch('luigi.json').then((response) => {
+    console.log('Resolved', response); // here log the response object
+    return response.json(); 
+  }).then(data => {
+        console.log(data);
   }).catch((err) => {
-    console.log('rejected', err)
-  })
+    console.log('rejected', err);
+  });
+
 
