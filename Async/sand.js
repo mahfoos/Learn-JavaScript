@@ -1,4 +1,3 @@
-
 // Vedio 1
 // console.log(1);
 // console.log(2);
@@ -20,7 +19,6 @@
 // request.open('GET', 'https://jsonplaceholder.typicode.com/todos/')
 // request.send();
 
-
 // vedio 3
 // const request = new XMLHttpRequest();
 
@@ -36,18 +34,14 @@
 // request.open('GET', 'https://jsonplaceholder.typicode.com/todos/')
 // request.send();
 
-
-// Status Codes 
-// 404  -  Wrong endpoint / not connected / cannot find 
+// Status Codes
+// 404  -  Wrong endpoint / not connected / cannot find
 // 200  - everthing is correct
 
 // https://developer.mozilla.org/en-US/docs/Web/HTTP/Status
 
-
-
-
 // Vedio 4
-// const getTodos = (callback) => { 
+// const getTodos = (callback) => {
 
 //     const request = new XMLHttpRequest();
 
@@ -78,49 +72,132 @@
 //     }else{
 //         console.log(data);
 //     }
-// });  
+// });
 
 // console.log(3);
 // console.log(4);
 
-
 //  vedio 5
 
-const getTodos = (callback) => { 
+// const getTodos = (callback) => {
 
+//     const request = new XMLHttpRequest();
+
+//     request.addEventListener('readystatechange', () => {
+
+//         if (request.readyState === 4 && request.status === 200) {
+//             const data = JSON.parse(request.responseText);
+//         callback(undefined, data);
+
+//         } else if (request.readyState === 4 ){
+//         callback('Could not fetch the data', undefined);
+//         }
+//     });
+
+//     request.open('GET', 'todos.json');
+//     request.send();
+
+// };
+
+// console.log(1);
+// console.log(2);
+
+// getTodos((err, data) => {        // callback function
+//     console.log('callback fired');
+//     if (err){
+//         console.log("Could not fetch the data");
+//     }else{
+//         console.log(data);
+//     }
+// });
+
+// console.log(3);
+// console.log(4);
+
+// vedio 6
+// const getTodos = (resource,callback) => {
+
+//     const request = new XMLHttpRequest();
+
+//     request.addEventListener('readystatechange', () => {
+
+//         if (request.readyState === 4 && request.status === 200) {
+//             const data = JSON.parse(request.responseText);
+//         callback(undefined, data);
+
+//         } else if (request.readyState === 4 ){
+//         callback('Could not fetch the data', undefined);
+//         }
+//     });
+
+//     request.open('GET', resource);
+//     request.send();
+
+// };
+
+// console.log(1);
+// console.log(2);
+
+// getTodos('luigi.json',(err, data) => {        // callback function
+//     console.log(data);
+//     getTodos('todos.json', (err, data) => {
+//         console.log(data);
+//         getTodos('shaun.json', (err,data) => {
+//             console.log(data);
+//         })
+//     })
+//     // if (err){
+//     //     console.log("Could not fetch the data");
+//     // }else{
+//     //     console.log(data);
+//     // }
+// });
+
+// console.log(3);
+// console.log(4);
+
+// vedio 7
+const getTodos = (resource) => {
+  return new Promise((resolve, reject) => {
     const request = new XMLHttpRequest();
 
-    request.addEventListener('readystatechange', () => {
-   
-
-        if (request.readyState === 4 && request.status === 200) {
-            const data = JSON.parse(request.responseText);
-        callback(undefined, data);
-
-        } else if (request.readyState === 4 ){
-        callback('Could not fetch the data', undefined);
-        }
+    request.addEventListener("readystatechange", () => {
+      if (request.readyState === 4 && request.status === 200) {
+        const data = JSON.parse(request.responseText);
+        resolve(data);
+      } else if (request.readyState === 4) {
+        reject('error getting resource');
+      }
     });
 
-    request.open('GET', 'todos.json');
+    request.open("GET", resource);
     request.send();
-
+  });
 };
 
-console.log(1);
-console.log(2);
+getTodos('luigi.json').then(data => {   // i delete this parameter becasue it has one parameter
+    console.log('Promise resolved: ', data);
+}).catch(err => {
+    console.log('Promise rejected', err); 
+});
 
-getTodos((err, data) => {        // callback function
-    console.log('callback fired');
-    if (err){
-        console.log("Could not fetch the data");
-    }else{
-        console.log(data); 
-    }
-});  
+// Promise example
+// const getSomething = () => {
+//     return new Promise((resolve, reject) => {
+//         // fetch something
+//         //resolve('some data');
+//        reject('some error');
+//     });
+// };
 
-console.log(3);
-console.log(4);
+// getSomething().then((data) => {
+//     console.log(data);
+// }, (err) => {
+//     console.log(err);
+// });
 
-
-
+// getSomething().then(data => {
+//     console.log(data);  // resolve fire here
+// }).catch((err) => {
+//     console.log(err)  // reject fire here
+// });
