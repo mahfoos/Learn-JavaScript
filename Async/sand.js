@@ -206,41 +206,49 @@
 // });
 
 // vedio 8
-const getTodos = (resource) => {
-  return new Promise((resolve, reject) => {
-    const request = new XMLHttpRequest();
+// const getTodos = (resource) => {
+//   return new Promise((resolve, reject) => {
+//     const request = new XMLHttpRequest();
 
-    request.addEventListener("readystatechange", () => {
-      if (request.readyState === 4 && request.status === 200) {
-        const data = JSON.parse(request.responseText);
-        resolve(data);
-      } else if (request.readyState === 4) {
-        reject("error getting resource");
-      }
-    });
+//     request.addEventListener("readystatechange", () => {
+//       if (request.readyState === 4 && request.status === 200) {
+//         const data = JSON.parse(request.responseText);
+//         resolve(data);
+//       } else if (request.readyState === 4) {
+//         reject("error getting resource");
+//       }
+//     });
 
-    request.open("GET", resource);
-    request.send();
-  });
-};
+//     request.open("GET", resource);
+//     request.send();
+//   });
+// };
 
-getTodos("luigi.json")
-  .then((data) => {
-    // i delete this parameter becasue it has one parameter
-    console.log("Promise 1 resolved: ", data);
-    return getTodos("shaun.json");
-  })
-  .then((data) => {
-    console.log("Promise 2 resolved:", data);
-    return getTodos("todos.json");
-  })
-  .then((data) => {
-    console.log("Promise 3 resolved:", data);
-  })
-  .catch((err) => {
-    console.log("Promise rejected", err);
-  });
+// getTodos("luigi.json")
+//   .then((data) => {
+//     // i delete this parameter becasue it has one parameter
+//     console.log("Promise 1 resolved: ", data);
+//     return getTodos("shaun.json");
+//   })
+//   .then((data) => {
+//     console.log("Promise 2 resolved:", data);
+//     return getTodos("todos.json");
+//   })
+//   .then((data) => {
+//     console.log("Promise 3 resolved:", data);
+//   })
+//   .catch((err) => {
+//     console.log("Promise rejected", err);
+//   });
 
 
 
   // Vedio 9 
+  // fetch api
+
+  fetch('luigis.json').then((response) => {
+    console.log('Resolved', response);
+  }).catch((err) => {
+    console.log('rejected', err)
+  })
+
