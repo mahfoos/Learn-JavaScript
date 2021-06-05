@@ -241,18 +241,32 @@
 //     console.log("Promise rejected", err);
 //   });
 
+// Vedio 9
+// fetch api ... much less code and much easy
 
+//   fetch('luigi.json').then((response) => {
+//     console.log('Resolved', response); // here log the response object
+//     return response.json();
+//   }).then(data => {
+//         console.log(data);
+//   }).catch((err) => {
+//     console.log('rejected', err);
+//   });
 
-  // Vedio 9 
-  // fetch api ... much less code and much easy
+// Vedio 10
+// async & wait
+const getTodos = async () => {
+  const response = await fetch("shaun.json"); // await doing - hold the response reply untill not asign to the paticular const
+  console.log(response); // log the response object
+  const data = await response.json();
+  return data;
+};
 
-  fetch('luigi.json').then((response) => {
-    console.log('Resolved', response); // here log the response object
-    return response.json(); 
-  }).then(data => {
-        console.log(data);
-  }).catch((err) => {
-    console.log('rejected', err);
-  });
+console.log(1);
+console.log(2);
 
+getTodos()
+    .then(data => console.log("resolved: ", data));
 
+console.log(3);
+console.log(4);
