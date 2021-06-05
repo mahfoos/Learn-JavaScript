@@ -255,18 +255,41 @@
 
 // Vedio 10
 // async & wait
+// const getTodos = async () => {
+//   const response = await fetch("shauns.json"); // await doing - hold the response reply untill not asign to the paticular const
+//   console.log(response); // log the response object
+//   const data = await response.json();
+//   return data;
+// };
+
+// console.log(1);
+// console.log(2);
+
+// getTodos()
+//     .then(data => console.log("resolved: ", data))
+//     .catch(err => console.log('rejected: ',err));
+// console.log(3);
+// console.log(4);
+
+
+// vedio 11
+// Throwing error
 const getTodos = async () => {
-  const response = await fetch("shaun.json"); // await doing - hold the response reply untill not asign to the paticular const
-  console.log(response); // log the response object
-  const data = await response.json();
-  return data;
-};
-
-console.log(1);
-console.log(2);
-
-getTodos()
-    .then(data => console.log("resolved: ", data));
-
-console.log(3);
-console.log(4);
+    const response = await fetch("shauns.json"); // await doing - hold the response reply untill not asign to the paticular const
+    console.log(response); // log the response object
+    
+    if (response.status !==200 ) {
+        throw new Error ('Cannot fetch the data');
+    }
+    const data = await response.json();
+    return data;
+  };
+  
+  console.log(1);
+  console.log(2);
+  
+  getTodos()
+      .then(data => console.log("resolved: ", data))
+      .catch(err => console.log('rejected: ',err));
+  console.log(3);
+  console.log(4);
